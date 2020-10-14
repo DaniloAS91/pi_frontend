@@ -1,7 +1,8 @@
+import { HttpClient } from '@angular/common/http';
+import { Usuario } from './../model/Usuario';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { from } from 'rxjs';
-import { Usuario } from '../model/Usuario';
 import { AuthService } from '../service/auth.service';
 import { faEnvelope, faUser } from '@fortawesome/free-regular-svg-icons';
 import { faLock, faUnlock, faAddressCard, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
@@ -16,6 +17,9 @@ export class CadastroComponent implements OnInit {
   usuario: Usuario = new Usuario()
   senha: string
   email: string
+  cpfUsuario: string
+  ok: false
+  listaUsuario: Usuario[]
 
   constructor(
     private authService: AuthService,
@@ -50,15 +54,18 @@ export class CadastroComponent implements OnInit {
   }
 
   cadastrar() {
-    if ( this.senha === this.usuario.usuarioSenha && this.email === this.usuario.usuarioEmail ) {
+    if ( this.senha === this.usuario.usuarioSenha && this.email === this.usuario.usuarioEmail) {
       this.authService.cadastrar(this.usuario).subscribe((resp: Usuario) => {
         this.usuario = resp
         this.router.navigate(['/login'])
         alert('Usuário cadastrado com sucesso!')
+      }, err => {
+        if (err.status == '500') {
+          alert('Usuario ja Cadastrado!')
+        }
       })
     } else {
       alert('Suas senhas ou email não conferem')
     }
   }
-
 }

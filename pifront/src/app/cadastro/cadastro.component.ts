@@ -61,11 +61,12 @@ export class CadastroComponent implements OnInit {
         alert('Usuário cadastrado com sucesso!')
       }, err => {
         if (err.status == '500') {
-          alert('Usuario ja Cadastrado!')
+          alert('CPF ja Cadastrado!')
         }
       })
     } else {
       alert('Suas senhas ou email não conferem')
     }
   }
+
 }

@@ -27,7 +27,8 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'cadastro', component: CadastroComponent},
   {path:'cadastro-tema', component: PostTemaComponent},
-  {path:'feed', component: FeedComponent},
+
+  
   {path:'sobre-nos', component: SobreNosComponent},
   {path:'editar-post/:id', component: PutPostagemComponent},
   {path:'delete-post/:id', component: DeletePostagemComponent},

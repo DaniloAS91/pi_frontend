@@ -61,8 +61,7 @@ export class FeedUsuarioComponent implements OnInit {
     }
   }
 
-
-
+  
 // Busca dados pelo CEP
   consultaCep(){
     this.viacep.buscarPorCep(this.cepCausa).then((endereco: Endereco) => {

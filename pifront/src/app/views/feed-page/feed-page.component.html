@@ -1,0 +1,122 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<section>
+    <div class="fundo-do-feed cinza1">
+
+        <div class="container">
+
+            <div class="row 1-camada">
+
+                <div class="col-lg-12">
+
+                    <div class="container row 2-camada">
+
+
+                        <!-- painel central -->
+                        <div class="coluna-central container-fluid col-lg- fundo-central">
+                            <!-- conteúdo painel central -->
+
+                            <!-- abertura div caixa de postagem -->
+                            <div id="POSTBOX" class="postbox cinza2 container mb-3">
+
+                                <!-- abre row postagem -->
+                                <div class=" container row w-100 justify-content-center" style="margin:15px;">
+                                    <div class="col-md-4">
+                                        <div class="row justify-content-center">
+                                            <img class="avatar" src="{{ fotoUrlUser }}" style="margin-top: 20px;" alt="foto de perfil">
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <a style="text-decoration: none;" routerLink="/meusdados">{{ nomeUser }}</a>
+                                        </div>
+                                    </div>
+                                    <div class="container col-lg-8">
+
+                                        <button id="fake-btn" class="cinza3 w-100" style="margin:15px;" (click)="abrirDialog()">
+                                            O que deseja publicar? 😀
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- fecha div caixa de postagem -->
+
+
+                            <!-- abre div listagem feed -->
+                            <div class="lista-feed container row cinza2">
+
+                                <!-- COLUNA LISTAGEM FEED -->
+                                <div class="container cinza2">
+
+                                    <div class="card cinza3 mt-5 mb-5" *ngFor='let item of listaPostagens | orderBy : key : reverse'>
+                                        <div class="card-header">
+                                            <div class="row d-flex align-items-center border border-info">
+                                                <div class="col-md-1 border border-info ">
+                                                    <img class="avatar border border-info align-content-center" src="https://uploads.metropoles.com/wp-content/uploads/2020/09/27193307/Cristiano-Ronaldo-2.jpg" alt="foto de perfil">
+                                                </div>
+                                                <div class="col-md-5 border border-info">
+                                                    <span>
+                                                        <a routerLink="/meusdados">
+                                                            {{ item.usuario.usuarioNome }}
+                                                        </a>
+                                                    </span>
+                                                    <h4 class="card-title text-info"> {{item.postTitulo}} </h4>
+                                                    <small class="text-info">Tema: {{item.tema.temaDescricao}} </small>
+
+                                                </div>
+
+                                                <div *ngIf="nomeUser == item.usuario.usuarioNome" class="col-md-6 d-flex border justify-content-end border-info">
+                                                    <button class="mr-3 btn btn-outline-info" [routerLink]="['/editar-post', item.id]">
+                                                        <fa-icon class="fas fa-edit"></fa-icon>
+                                                    </button>
+                                                    <button class="btn btn-outline-danger ml-3" [routerLink]="['/delete-post', item.id]">
+                                                        <fa-icon class='fas fa-trash-alt'></fa-icon>
+                                                    </button>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text text-info" aria-describedby="texto"> {{item.postTexto}}
+                                            </p>
+                                            <a class="justify-content-center" href="">Ver o Post completo</a>
+                                            <small id="texto" class="form-text m-0 text-muted text-info mb-3">
+                                                Postado em {{item.data | date: 'dd/MM/yyyy'}} às
+                                                {{item.data | date:'HH:mm'}}</small>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+
+                                <!-- FECHA COL LISTAGEM FEED -->
+
+                            </div>
+                            <!-- fecha div postagem feed -->
+                        </div>
+                        <!-- fim painel central -->
+
+                        <!-- painel lateral direito 
+                        OBS: PARA CONSEGUIR USAR ESSE PAINEL É PRECISO
+                    DIMINUIR O TAMANHO DA COL DO PAINEL CENTRAL-->
+                        <!-- <div class="col-md-2 fundo-lateral-direito border border-danger bg-warning" style="margin:15px;">
+                        </div> -->
+
+                        <!-- fim painel lateral direito -->
+
+                        <div>
+                            <app-float-btn></app-float-btn>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

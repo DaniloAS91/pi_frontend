@@ -1,0 +1,89 @@
+<h1 mat-dialog-title>Agora é só preencher. 😀</h1>
+<div mat-dialog-content class="dialog">
+    <div class="example-form">
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Título</mat-label>
+            <input matInput [(ngModel)]='postagem.postTitulo'>
+        </mat-form-field>
+    </div>
+
+
+    <div class="example-form">
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Texto</mat-label>
+            <textarea matInput [(ngModel)]='postagem.postTexto'></textarea>
+        </mat-form-field>
+    </div>
+
+
+    <div class="example-form">
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Tema</mat-label>
+            <!--<a routerLink='/cadastro-tema'>Cadastre um novo</a>-->
+            <mat-select [(ngModel)]="idTema" required id='tema' (change)='findByIdTema()'>
+                <mat-option *ngFor="let item of listaTemas" [value]="item.id">
+                    {{item.temaDescricao}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <a routerLink='/cadastro-tema'>
+            <small style="float: inline-end;">Cadastre um novo tema</small>
+        </a>
+    </div>
+
+    <!--
+    <div class="example-form">
+        <mat-form-field class="w-100" appearance="outline">
+            <mat-label>Estado</mat-label>
+            <mat-select [(ngModel)]="postagem.postEstado" required>
+                <mat-option *ngFor="let item of listaUF" [value]="item">
+                    {{item}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    
+  <div class="example-form">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Cidade</mat-label>
+      <input matInput required [(ngModel)]='postagem.postCidade'>
+    </mat-form-field>
+  </div>
+
+  <div class="example-form">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Endereço</mat-label>
+      <input matInput [(ngModel)]='postagem.postEndereco'>
+    </mat-form-field>
+  </div>
+
+
+  <div class="example-form">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Tag</mat-label>
+      <input matInput [(ngModel)]='postagem.postTag'>
+    </mat-form-field>
+  </div>
+
+
+  <div class="example-form">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Site</mat-label>
+      <input matInput [(ngModel)]='postagem.postUrl'>
+    </mat-form-field>
+  </div>
+
+
+  <div class="example-form">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Url de Imagem</mat-label>
+      <input matInput [(ngModel)]='postagem.postImagem'>
+    </mat-form-field>
+  </div>
+</div>
+-->
+    <div mat-dialog-actions>
+        <button mat-raised-button class="bg-success" (click)="publicar()">Publicar!</button>
+        <button mat-raised-button (click)="cancelar()">Cancelar</button>
+    </div>

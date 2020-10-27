@@ -1,0 +1,23 @@
+.bg-laranja {
+    background-color: rgb(235, 156, 10)
+}
+.textbr {
+    color:rgb(235, 156, 10);
+}
+.alinhamento {
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+}
+.endereco {
+    border: solid whitesmoke;
+    min-height: 60px;
+    border-radius: 50px;
+    background: rgb(48, 48, 48) transparent;
+    background: rgba(29, 29, 29, 0.4);
+}
+.textwh {
+    color: white;
+}
+
